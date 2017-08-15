@@ -1,0 +1,115 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{graphicx,textcomp}
+\usepackage{natbib}
+\usepackage{setspace}
+\usepackage{fullpage}
+\usepackage{color}
+\usepackage[reqno]{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb,enumerate}
+\usepackage[all]{xy}
+\usepackage{endnotes}
+\usepackage{lscape}
+\newtheorem{com}{Comment}
+\newtheorem{lem} {Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}{Definition}
+\newtheorem{cor}{Corollary}
+\newtheorem{obs}{Observation}
+\usepackage[compact]{titlesec}
+\usepackage{dcolumn}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{multirow}
+\usepackage{xcolor}
+\newcolumntype{.}{D{.}{.}{-1}}
+\newcolumntype{d}[1]{D{.}{.}{#1}}
+\definecolor{light-gray}{gray}{0.65}
+\usepackage{url}
+\newcommand{\Sref}[1]{Section~\ref{#1}}
+\newtheorem{hyp}{Hypothesis}
+
+\title{Text as Data: Homework 2}
+\date{}
+
+\begin{document}
+\maketitle
+
+
+In this homework assignment we're going to analyze the first presidential debate from the 2012 election.  \\
+
+\subsubsection*{Problem 1}
+To analyze the debate, we first need to load the debate and parse the content.  On the coursewebsite, you'll find the file {\tt debate1.html}.  Download the file and open it in a browser. We will use {\tt BeautifulSoup} to parse HTML file containing the debate transcript.
+
+\begin{itemize}
+\item Load the webpage into {\tt Python} and use {\tt BeautifulSoup} to create a searchable version of the debate. What tags can you use to identify statements?
+
+\item Note that not all of the statements contain information about the speaker. Devise a rule to assign the unlabeled statements to speakers.
+
+\item For substantive reasons, we would like to define a single statement as any \textit{uninterrupted} speech from a candidate. We'll say a candidate is interrupted when the transcript says that a new speaker has begun.  In other words, cross talk doesn't count as an interruption. Create a list with just the text (not the tags) of each statement as an element. Some statements are split among several tags; these will need to be concatenated according to the rule you devised above. Remember to filter out notes about audience behavior
+
+\end{itemize}
+
+\subsection*{Problem 2}
+Now we're going to do some more preprocessing to create a dataset that includes useful information about our texts. We will use a curated dictionary list from Neal Caren. The positive words are at {\tt http://www.unc.edu/$\sim$ncaren/haphazard/positive.txt} and the negative words are at {\tt http://www.unc.edu/$\sim$ncaren/haphazard/negative.txt}.
+\begin{itemize}
+\item Load the positive and negative words into {\tt python}
+
+\item Use the {\tt porter}, {\tt snowball} and {\tt lancaster} stemmers from the {\tt nltk} package to create stemmed versions of the dictionaries.
+
+
+\item Using the original and stemmed dictionaries, we're going to create a statement by statement data set of the speech.
+The data set should have the following columns:
+\begin{itemize}
+\item[1)] Statement number (place in debate)
+\item[2)] Speaker
+\item[3)] Number of non-stop words spoken
+\item[4)] Number of positive words
+\item[5)] Number of negative words
+\item[6)] Number of lancaster stemmed positive words
+\item[7)] Number of lancaster stemmed negative words
+\item[8)] Number of porter stemmed positive words
+\item[9)] Number of porter stemmed negative words
+\item[10)] Number of snowball stemmed positive words
+\item[11)] Number of snowball stemmed negative words
+\end{itemize}
+\end{itemize}
+
+To create the data set, create a set of nested dictionaries that map each statement in the list created in Problem 1 to the each of the attributes described above. To  calculate the values for items 3 - 11 above, you'll need to do the following to each statement:
+\begin{itemize}
+\item[-] Discard punctuation
+\item[-] Remove capitalization
+\item[-] Remove stop words with the list of words provided here: \\
+{\tt `http://jmlr.org/papers/volume5/lewis04a/a11-smart-stop-list/english.stop'}
+\item[-] Tokenize the words
+\item[-] Apply each of the stemmers, determining which of the words appear in the corresponding stemmed dictionaries
+\end{itemize}
+
+
+Write your dataset as a csv file and save it to a working directory. Turn it in with your homework.
+
+
+\subsection*{Problem 3}
+
+Using our new data set, let's make some observations about the debate
+\begin{itemize}
+\item[-] Load the data into {\tt R}
+\item[-] Create a visualization that compares the overall positive and negative word rate for Obama, Romney, and Lehrer.  What patterns do you notice?  There is no one right answer, be creative!
+\item[-] Using your data set, examine trends in each candidate's statements and Lehrer's speeches.  Do you notice any
+\begin{itemize}
+\item[i)] Trends in the measured tone?
+\item[ii)] Response to the other candidate's tone (examining who spoke previously)?
+\item[iii)] Overall interesting patterns? (this is an intentionally vague question)
+\end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
+
+
+\end{document}
