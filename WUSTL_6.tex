@@ -217,11 +217,11 @@ Causal Inference
 \begin{center}
 \only<1>{\scalebox{0.7}{\includegraphics{OldMan.jpg}}}
 \only<2>{\scalebox{0.7}{\includegraphics{HerbalTeaParty.jpeg}}}
-\only<3>{\scalebox{0.2}{\includegraphics{CFPB_Complaint.jpg}}}
-\only<4>{\scalebox{0.8}{\includegraphics{CFPBClarkKent.png}}}
+\only<5>{\scalebox{0.2}{\includegraphics{CFPB_Complaint.jpg}}}
+\only<6>{\scalebox{0.8}{\includegraphics{CFPBClarkKent.png}}}
 
-\only<5>{\scalebox{0.1125}{\includegraphics{Trump.jpg}}}
-\only<6>{\scalebox{0.275}{\includegraphics{Obama.jpeg}}}
+\only<7>{\scalebox{0.1125}{\includegraphics{Trump.jpg}}}
+\only<8>{\scalebox{0.275}{\includegraphics{Obama.jpeg}}}
 % \only<3-4>{
 % \begin{tikzpicture}
 
@@ -235,8 +235,8 @@ Causal Inference
 % \end{tikzpicture}
 % }
 
-%\only<7>{\scalebox{2.25}{\includegraphics{Shelby.jpg}}}
-%\only<8>{\scalebox{0.65}{\includegraphics{McCain.jpg}}}
+\only<3>{\scalebox{2.25}{\includegraphics{Shelby.jpg}}}
+\only<4>{\scalebox{0.65}{\includegraphics{McCain.jpg}}}
 % \begin{itemize}
 % \item[-] Campaign Messages
 % \item[-] Presidential bully pulpit
@@ -489,6 +489,66 @@ Discovering Treatments and Estimating Marginal Effects
   \end{itemize}
 
 \end{frame}
+
+
+\begin{frame}
+\frametitle{Formal Definition of Analyst Induced SUTVA}
+
+Define $g$ as dependent on other data:\pause
+\begin{eqnarray}
+\invisible<1>{g(\boldsymbol{X}_{i}, Y(\boldsymbol{X})) \nonumber }
+\end{eqnarray}
+\pause
+
+
+
+\invisible<1-2>{Rerandomize ($\boldsymbol{X}^{'}$), but fix $\boldsymbol{X}_{i}$} \pause
+\begin{eqnarray}
+\invisible<1-3>{g(\boldsymbol{X}_{i}, Y(\boldsymbol{X}^{'})) \nonumber }
+\end{eqnarray}
+
+
+\pause
+\invisible<1-4>{analyst-level SUTVA holds if}
+\begin{eqnarray}
+\invisible<1-5>{g(\boldsymbol{X}_{i}, Y(\boldsymbol{X})) =  g(\boldsymbol{X}_{i}, Y(\boldsymbol{X}^{'})) \nonumber }
+\end{eqnarray}
+
+\pause
+\invisible<1-6>{Requires:} \pause
+\begin{itemize}
+\invisible<1-7>{\item[1)] Category stability}\pause \invisible<1-8>{ $\leadsto$ same categories (retrained)}
+\invisible<1-8>{\item[2)] Classification Stability } \pause \invisible<1-9>{$\leadsto$ same text leads to same label (retrained)}\pause
+\end{itemize}
+
+\invisible<1-9>{Train/Test split ensures both hold.}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Why Train-Test Splits?}
+\pause
+Train-Test splits are on the rise in causal inference (e.g. Athey and Wager, Chernozhukov et al.) and political science (Cranmer and Desmarais). \\ \pause
+
+\medskip
+
+We like that they build in \alert{discovery} and connect with a \alert{general theory of experiments}. \pause
+
+\medskip
+
+Why not Pre-Analysis Plans (PAP)? \pause
+\begin{itemize}
+\item When possible, we advocate \alert{sequential experiments}. \pause
+\item How would we design experiments to \alert{ensure we replicate}? \\ \pause
+\alert{Train-test Split}: it simulates a `fresh' test and let's us learn from the first round data. \pause
+\item \alert{regulation} $\leadsto$ Pre-analysis plans; \\ \pause
+\alert{incentives} $\leadsto$ Train-Test splits
+\end{itemize}
+
+
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Discovering Interesting Treatments}
