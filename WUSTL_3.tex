@@ -455,7 +455,7 @@ Three ways to create dictionaries (non-exhaustive): \pause
 
 Applying the model: \pause
 \begin{itemize}
-\invisible<1>{\item[-] Vector of word counts:  $\boldsymbol{X}_i = (X_{i1}, X_{i2}, \hdots, X_{iK}$, $(i = 1, \hdots, N)$} \pause
+\invisible<1>{\item[-] Vector of word counts:  $\boldsymbol{X}_i = (X_{i1}, X_{i2}, \hdots, X_{iK})$, $(i = 1, \hdots, N)$} \pause
 \invisible<1-2>{\item[-] Weights attached to words  $\boldsymbol{\theta} = (\theta_{1}, \theta_{2}, \hdots, \theta_{K})$  } \pause
 \begin{itemize}
 \invisible<1-3>{\item[-] $\theta_{k} \in \{0,1\}$} \pause
@@ -700,7 +700,7 @@ Measures of classification performance
 \invisible<1-6>{{\tt tax, cost, capital, board, liability, foreign,  cancer, crude (oil), tire } } \pause
 \invisible<1-7>{\item[-] \alert{73\%} of Harvard negative words in this set(!!!!!)} \pause
 \invisible<1-8>{\item[-] Not Negative Harvard, Negative in Accounting: \\} \pause
-\invisible<1-9>{{\tt felony, litigation, restated, misstatement, and unanticipated} } \pause
+\invisible<1-9>{{\tt felony, litigation, restated, misstatement, unanticipated} } \pause
 \end{itemize}
 
 
@@ -753,7 +753,7 @@ Dodds and Danforth (2009): Use a dictionary method to measure happiness \pause
 \invisible<1-5>{\item[] \alert{Neutral}: street (5.22)/ paper (5.20)/ engine (5.20) } \pause
 \invisible<1-6>{\item[] \alert{Unhappy} : cancer (1.5)/funeral (1.39)/ rape (1.25) /suicide (1.25) } \pause
 \end{itemize}
-\invisible<1-7>{\item[-] \alert{Happiness} for text $i$ (with word $j$ having happiness $\theta_j$ and document frequence $X_{ij}$} \pause
+\invisible<1-7>{\item[-] \alert{Happiness} for text $i$ (with word $j$ having happiness $\theta_j$ and document frequence $X_{ij}$)} \pause
 \begin{eqnarray}
 \invisible<1-8>{\text{Happiness}_{i}  & = & \frac{ \sum_{k=1}^{K} \theta_{k} X_{ik} } { \sum_{k=1}^{K} X_{ik}} }  \nonumber
 \end{eqnarray}
@@ -1131,7 +1131,7 @@ Suppose we have $N$ documents, with each document $i$ having label $y_{i} \in \{
 \invisible<1-5>{Problem: \\} \pause
 \begin{itemize}
 \invisible<1-6>{\item[-] $J$ will likely be large (perhaps $J> N$)} \pause
-\invisible<1-7>{\item[-] There many correlated variables} \pause
+\invisible<1-7>{\item[-] There are many correlated variables} \pause
 \end{itemize}
 
 \invisible<1-8>{Predictions will be \alert{variable}}
@@ -1147,7 +1147,7 @@ Suppose we have $N$ documents, with each document $i$ having label $y_{i} \in \{
 Penalty for Model Complexity
 
 \begin{eqnarray}
-f(\boldsymbol{\beta}, \boldsymbol{X}, \boldsymbol{Y} ) & = & \sum_{i=1}^{N} \left(y_{i} - \beta_{0} + \sum_{j=1}^{J} \beta_{j} x_{ij}  \right)^{2} + \lambda \sum_{j=1}^{J} \underbrace{|\beta_{j}|}_{\text{Penalty}} \nonumber \pause
+f(\boldsymbol{\beta}, \boldsymbol{X}, \boldsymbol{Y} ) & = & \sum_{i=1}^{N} \left(y_{i} - \beta_{0} - \sum_{j=1}^{J} \beta_{j} x_{ij}  \right)^{2} + \lambda \sum_{j=1}^{J} \underbrace{|\beta_{j}|}_{\text{Penalty}} \nonumber \pause
 \end{eqnarray}
 
 
