@@ -104,7 +104,7 @@ getty_count = getty.values()
 getty_keys = getty.keys()
 
 
-rfile = open('/users/jgrimmer/dropbox (personal)/teaching/text/tad14/class3/GettysburgFinal.txt', 'w')
+rfile = open('/users/justingrimmer/dropbox/teaching/text/tad14/class3/GettysburgFinal.txt', 'w')
 rfile.write('stem, count')
 rfile.write('\n')
 
@@ -117,7 +117,7 @@ rfile.close()
 
 
 ##position it so that it creates a document
-dtm = open('/users/jgrimmer/dropbox (personal)/teaching/tad14/class3/GettysburgFinalDTM.txt', 'w')
+dtm = open('/users/justingrimmer/dropbox/teaching/tad14/class3/GettysburgFinalDTM.txt', 'w')
 
 getty_words = 'Document'
 getty_numbers = 'Address'
@@ -151,7 +151,7 @@ dtm.close()
 
 
 
-out = open('/users/jgrimmer/Dropbox (personal)/HouseData/NewListPress.csv', 'r')
+out = open('/users/justingrimmer/Dropbox/HouseData/NewListPress.csv', 'r')
 
 press = out.readlines()
 
@@ -170,7 +170,7 @@ neg_stem = map(st.stem, neg_words)
 
 
 
-stop_words = urlopen('http://jmlr.org/papers/volume5/lewis04a/a11-smart-stop-list/english.stop').read().split('\n')
+stop_words = urlopen('http://www.ai.mit.edu/projects/jmlr/papers/volume5/lewis04a/a11-smart-stop-list/english.stop').read().split('\n')
 
 stop_stemmed = map(st.stem, stop_words)
 
